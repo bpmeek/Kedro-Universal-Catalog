@@ -1,1 +1,1 @@
-recursive-include kedro_catalog/templates *
+recursive-include universal_catalog/templates *
