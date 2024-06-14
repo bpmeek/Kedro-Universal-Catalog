@@ -1,0 +1,66 @@
+[build-system]
+# Minimum requirements for the build system to execute.
+requires = ["setuptools>=65.5.1"]  # PEP 518 specifications
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Kedro-Universal-Catalog"
+authors = [
+  {name = "Brandon Meek"}
+]
+description = "Kedro-Universal-Catalog lets you build a central Kedro Data Catalog"
+requires-python = ">=3.8"
+keywords = [
+  "kedro",
+  "data science",
+  "data engineering",
+  "data pipelines"
+]
+dynamic = ["readme", "version"]
+
+[project.scripts]
+kedro-catalog = "universal_catalog.cli.plugin:cli"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+readme = {file = "README.md", content-type = "text/markdown"}
+version = {attr = "universal_catalog.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["universal_catalog*"]
+
+[project.optional-dependencies]
+test = [
+  "requests-mock~=1.12.1",
+  "pandas~=2.0.3"
+]
+
+[tool.ruff.format]
+exclude = ["**/templates"]
+docstring-code-format = true
+
+[tool.pytest.ini_options]
+addopts="""
+--cov-context test  \
+--cov-config pyproject.toml \
+--cov-report xml:coverage.xml \
+--cov-report term-missing \
+--cov universal_catalog \
+--cov tests \
+--ignore universal_catalog/templates \
+--no-cov-on-fail \
+-ra \
+-W ignore"""
+testpaths = [
+  "tests"
+]
+
+[tool.coverage.report]
+omit = [
+  "universal_catalog/templates/*",
+  "tests/*"
+]
+exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["universal_catalog"]

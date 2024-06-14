@@ -1,0 +1,6 @@
+{
+  "server_name": "New Kedro Catalog Server",
+  "repo_name": "{{ cookiecutter.server_name.strip().replace(' ', '-').replace('_', '-').lower() }}",
+  "python_package": "{{ cookiecutter.server_name.strip().replace(' ', '_').replace('-', '_').lower() }}",
+  "server_version": "{{ cookiecutter.server_version }}"
+}

@@ -1,0 +1,10 @@
+server_name:
+  title: "Catalog Name"
+  text: |
+    Please enter a name for your new Catalog.
+    Spaces, hyphens, and underscores are allowed.
+    To skip this step in future use --name
+  regex_validator: "^[\\w -]{2,}$"
+  error_message: |
+    It must contain only alphanumeric symbols, spaces, underscores and hyphens and
+    be at least 2 characters long.
