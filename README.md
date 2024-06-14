@@ -24,10 +24,10 @@ across projects.
 
 ---
 
-### Installation
+### Installation from source
 
 ```
-pip install kedro-universal-catalog
+pip install git+https://github.com/bpmeek/kedro-universal-catalog@main
 ```
 
 ### Initialize a new server
