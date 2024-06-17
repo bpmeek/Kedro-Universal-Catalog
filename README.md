@@ -91,7 +91,7 @@ entry `remote_catalog` and have the key `url`.
 
 ```yaml
 remote_catalog:
-  url: http://127.0.0.1:8000/catalog/
+  url: http://127.0.0.1:8000/
 ```
 
 When the `RemoteCatalog` is fetched it is merged with your project's `catalog.yml` with the project's catalog taking overwriting duplicate datasets.
