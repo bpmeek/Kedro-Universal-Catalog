@@ -29,6 +29,12 @@ async def get_record(dataset_name: Datasets):
     return dataset
 
 
+@app.post("/catalog/")
+async def get_catalog():
+    catalog = CATALOG.get_catalog()
+    return catalog
+
+
 if __name__ == "__main__":
     load_catalog(CONFIG_LOCATION)
     server_settings = load_server_settings(CONFIG_LOCATION)
