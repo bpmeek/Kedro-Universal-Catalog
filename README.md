@@ -94,6 +94,8 @@ remote_catalog:
   url: http://127.0.0.1:8000/catalog/
 ```
 
+When the `RemoteCatalog` is fetched it is merged with your project's `catalog.yml` with the project's catalog taking overwriting duplicate datasets.
+
 
 ## What if I don't use Kedro?
 
