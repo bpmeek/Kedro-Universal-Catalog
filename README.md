@@ -14,7 +14,7 @@ and unaffected.
 
 Kedro-Universal-Catalog lets you define in a single place the instructions for loading a particular piece of data, this
 will ensure that all of your users are using the correct and latest definition. It will also let them easily re-use data
-across projects.
+across projects.  Best of all, it still works with [Kedro-Viz](https://github.com/kedro-org/kedro-viz)
 
 
 ## Getting Started
@@ -71,6 +71,29 @@ cars:
   source_name: cars
   url: http://localhost:5000/
 ```
+
+## Advanced usage
+
+### Replace entire catalog
+
+If you have a lot of datasets and don't want to define each one in your Kedro Project's catalog you can 
+use `RemoteCatalog` instead.
+
+In your Kedro project's `settings.py` add:
+
+```python
+from universal_catalog import RemoteCatalog
+DATA_CATALOG_CLASS = RemoteCatalog
+```
+
+Then update `local/credentials.yml` to tell `RemoteCatalog` where to get your catalog from. Be sure to name the 
+entry `remote_catalog` and have the key `url`.
+
+```yaml
+remote_catalog:
+  url: http://127.0.0.1:8000/catalog/
+```
+
 
 ## What if I don't use Kedro?
 

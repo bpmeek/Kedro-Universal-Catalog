@@ -106,3 +106,7 @@ class UniversalCatalog(DataCatalog):
         dataset_config = self._datasets.get(dataset_name, None)
 
         return dataset_config
+
+    def get_catalog(self) -> dict[str, dict[str, Any]]:
+        """Return dictionary of catalog entries."""
+        return self._datasets

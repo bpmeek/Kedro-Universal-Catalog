@@ -1,4 +1,5 @@
 import pytest
+import yaml
 
 from universal_catalog.core.universal_catalog import load_catalog, UniversalCatalog
 from kedro.io.core import DatasetNotFoundError
@@ -43,3 +44,9 @@ def test_get_entry(tmp_catalog: UniversalCatalog):
 def test_bad_entry(tmp_catalog: UniversalCatalog):
     with pytest.raises(DatasetNotFoundError):
         tmp_catalog.get_entry("companie")
+
+
+def test_get_catalog(tmp_catalog: UniversalCatalog):
+    catalog = tmp_catalog.get_catalog()
+    catalog_dict = yaml.safe_load(CATALOG_CONTEXT)
+    assert catalog_dict == catalog

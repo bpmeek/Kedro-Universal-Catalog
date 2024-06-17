@@ -7,7 +7,9 @@ from pandas.testing import assert_frame_equal
 
 from kedro.io.core import DatasetError
 
-from universal_catalog.core.universal_catalog_dataset import UniversalCatalogDataset
+from universal_catalog.core.datasets.universal_catalog_dataset import (
+    UniversalCatalogDataset,
+)
 
 TEST_URL = "http://localhost:5000/"
 TEST_METHOD = "POST"

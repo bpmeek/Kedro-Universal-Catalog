@@ -7,6 +7,8 @@ from kedro.io.core import AbstractDataset, DatasetError
 
 import json
 
+from .utils import _execute_request
+
 
 class UniversalCatalogDataset(AbstractDataset):
     """``UniversalCatalogDataset`` is a wrapper around the ``AbstractDataset``
@@ -47,21 +49,10 @@ class UniversalCatalogDataset(AbstractDataset):
     def _materialize(self):
         if not self._dataset:
             request_body = dict(name=self._source_name)
-            _config: dict[str, Any] = self._execute_request(request_body).json()
+            _config: dict[str, Any] = _execute_request(self._url, request_body).json()
             self._dataset = AbstractDataset.from_config(
                 name=self._source_name, config=_config
             )
-
-    def _execute_request(self, json_obj: dict[str, str]) -> requests.Response:
-        try:
-            response = requests.post(self._url, data=json.dumps(json_obj))
-            response.raise_for_status()
-        except requests.exceptions.HTTPError as exc:
-            raise DatasetError("Failed to fetch data", exc) from exc
-        except OSError as exc:
-            raise DatasetError("Failed to connect to the remote server", exc) from exc
-
-        return response
 
     def _load(self):
         self._materialize()
