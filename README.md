@@ -1,10 +1,8 @@
 # Kedro-Universal-Catalog
 
----
 
 ## What is Kedro-Universal-Catalog?
 
----
 
 Kedro-Universal-Catalog is a serving platform to host and serve entries from a 
 [Kedro Data Catalog](https://docs.kedro.org/en/stable/data/#) config. It does not load the data, but rather, it provides
@@ -13,7 +11,6 @@ and unaffected.
 
 ## Why do I need this?
 
----
 
 Kedro-Universal-Catalog lets you define in a single place the instructions for loading a particular piece of data, this
 will ensure that all of your users are using the correct and latest definition. It will also let them easily re-use data
@@ -22,7 +19,6 @@ across projects.
 
 ## Getting Started
 
----
 
 ### Installation from source
 
@@ -77,8 +73,6 @@ cars:
 ```
 
 ## What if I don't use Kedro?
-
----
 
 [Why you should](https://docs.kedro.org/en/stable/introduction/index.html). 
 
